@@ -1,0 +1,15 @@
+---
+title: "test"
+author: "Sangyong Choi"
+date: "9/14/2019"
+output: html_document
+---
+- Sangyong Choi  
+_1. Position_  
+_2. Degree_  
+
+- Janice Jung
+_1. Position_
+_1. Degree_
+
+# Sangyong Choi is learning R

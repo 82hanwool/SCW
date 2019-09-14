@@ -1,0 +1,53 @@
+---
+title: "My First Markdown"
+author: "Sangyong Choi"
+date: "9/14/2019"
+output: html_document
+---
+Bold - **bold**  
+Italics - _Italics_  
+Italics - *Italics*  
+
+# Title
+## Subtitle
+### Section Title
+#### Subsection Title
+
+- Bullet List 1
+- Bullet List 2
+
+1. Ordered List 1
+1. Ordered List 2
+1. Ordered List 3
+
+
+
+```{r first_chunk}
+gapminder <- read.table("gapminder.txt", header = TRUE)
+head(gapminder)
+```
+
+##### Let's draw plots
+```{r Plot, fig.height=5, fig.width=7}
+library(ggplot2)
+e_rows=startsWith(as.vector(gapminder$country), c('E') )
+e_countries <- gapminder[e_rows, ]
+
+ggplot(data = e_countries, aes(x = year, y = pop/1000000, fill=continent)) +
+  geom_bar(stat="identity") + 
+  facet_wrap( ~ country) +
+  labs(
+    x = "Year",                     # x axis title
+    y = "Population (Million)",     # y axis title
+    title = "Figure 2",             # main title of figure
+    fill = "Continent"              # title of legend
+  ) +
+  theme(axis.text.x=element_text(angle=45), axis.ticks.x=element_blank()) +
+  theme_bw()
+```
+
+The mean life expectancy of Sweden is
+`mean(gapminder[gapminder$country == "Sweden", "LifeExp"]`
+
+The mean life expectancy of Sweden is 
+`r mean(gapminder[gapminder$country == "Sweden", "LifeExp"])'
